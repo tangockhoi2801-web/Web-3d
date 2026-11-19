@@ -146,8 +146,9 @@ function updateDependentGeometry() {
 }
 
 function addPoint(position, requestedName) {
-  const name = requestedName || String.fromCharCode(65 + (nextPointNumber++ % 26)) +
-    (nextPointNumber > 26 ? Math.floor(nextPointNumber / 26) : '');
+  const autoIndex = nextPointNumber++;
+  const name = requestedName || String.fromCharCode(65 + (autoIndex % 26)) +
+    (autoIndex >= 26 ? String(Math.floor(autoIndex / 26)) : '');
   const material = new THREE.MeshStandardMaterial({
     color: 0x65ddc5,
     emissive: 0x123b35,
